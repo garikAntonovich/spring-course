@@ -2,19 +2,17 @@ package by.garikein.spring_introduction;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class ConfigWithAnnotations1 {
+public class ScopeTest {
     public static void main(String[] args) {
         ClassPathXmlApplicationContext context =
                 new ClassPathXmlApplicationContext("applicationContext2.xml");
 
-        Person person = context.getBean("personBean", Person.class);
-        person.callYourPet();
+        Dog myDog = context.getBean("dog", Dog.class);
+        Dog yourDog = context.getBean("dog", Dog.class);
 
-        System.out.println(person.getSurname());
-        System.out.println(person.getAge());
-
-//        Cat myCat = context.getBean("catBean", Cat.class);
-//        myCat.say();
+        System.out.println(myDog==yourDog);
+        System.out.println(myDog);
+        System.out.println(yourDog);
 
         context.close();
     }
